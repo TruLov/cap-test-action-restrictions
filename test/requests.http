@@ -1,0 +1,31 @@
+@host=http://localhost:4005
+@admin=Basic alice:
+@customer=Basic fred:
+@myOrder=ID=97d2d24b-af8b-5643-9815-865432c198e4,IsActiveEntity=true
+@otherOrder=ID=ad03593b-9def-525c-ad1a-9bf0c0405990,IsActiveEntity=true
+
+### 
+# @name getOrder
+GET {{host}}/catalog/Orders({{myOrder}})
+Authorization: {{customer}}
+
+### 
+# @name cannotSeeOtherOrder
+GET {{host}}/catalog/Orders({{otherOrder}})
+Authorization: {{customer}}
+
+### 
+# @name submitOrder
+POST {{host}}/catalog/Orders({{myOrder}})/submit
+Authorization: {{customer}}
+Content-Type: application/json
+
+{}
+
+### 
+# @name cannotSubmitOtherOrder
+POST {{host}}/catalog/Orders({{otherOrder}})/submit
+Authorization: {{customer}}
+Content-Type: application/json
+
+{}
