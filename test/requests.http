@@ -1,4 +1,4 @@
-@host=http://localhost:4005
+@host=http://localhost:4004
 @admin=Basic alice:
 @customer=Basic fred:
 @myOrder=ID=97d2d24b-af8b-5643-9815-865432c198e4,IsActiveEntity=true
